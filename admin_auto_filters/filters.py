@@ -20,8 +20,9 @@ class AutocompleteFilter(admin.SimpleListFilter):
 
         if self.rel_model:
             model = self.rel_model
-
-        remote_field = model._meta.get_field(self.field_name).remote_field
+            remote_field = model._meta.get_field(self.field_pk)
+        else:
+            remote_field = model._meta.get_field(self.field_name).remote_field
 
         widget = AutocompleteSelect(remote_field, model_admin.admin_site)
         field = forms.ModelChoiceField(

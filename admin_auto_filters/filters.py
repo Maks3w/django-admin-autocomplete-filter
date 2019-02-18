@@ -28,7 +28,7 @@ class AutocompleteFilter(admin.SimpleListFilter):
         field = forms.ModelChoiceField(
             queryset=self.get_queryset_for_field(model, self.field_name),
             widget=widget,
-            required=False
+            required=False,
         )
 
         self._add_media(model_admin, widget)

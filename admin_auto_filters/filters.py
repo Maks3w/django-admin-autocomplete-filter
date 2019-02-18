@@ -14,16 +14,6 @@ class AutocompleteFilter(admin.SimpleListFilter):
     widget_attrs = {}
     rel_model = None
 
-    class Media:
-        js = (
-            'django-admin-autocomplete-filter/js/autocomplete_filter_qs.js',
-        )
-        css = {
-            'screen': (
-                'django-admin-autocomplete-filter/css/autocomplete-fix.css',
-            ),
-        }
-
     def __init__(self, request, params, model, model_admin):
         self.parameter_name = '{}__{}__exact'.format(self.field_name, self.field_pk)
         super().__init__(request, params, model, model_admin)
